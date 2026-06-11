@@ -1,0 +1,658 @@
+{
+  "GorillaFileSystem": [
+    {
+      "user": "List all files in the current directory",
+      "assistant": "{\"name\":\"ls\",\"arguments\":{\"a\":false}}"
+    },
+    {
+      "user": "Show me hidden files too when listing",
+      "assistant": "{\"name\":\"ls\",\"arguments\":{\"a\":true}}"
+    },
+    {
+      "user": "What directory am I currently in?",
+      "assistant": "{\"name\":\"pwd\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me the contents of config.yaml",
+      "assistant": "{\"name\":\"cat\",\"arguments\":{\"file_name\":\"config.yaml\"}}"
+    },
+    {
+      "user": "Display the content of README.md",
+      "assistant": "{\"name\":\"cat\",\"arguments\":{\"file_name\":\"README.md\"}}"
+    },
+    {
+      "user": "Find all files named requirements.txt starting from the current directory",
+      "assistant": "{\"name\":\"find\",\"arguments\":{\"path\":\".\",\"name\":\"requirements.txt\"}}"
+    },
+    {
+      "user": "Search for the word 'error' in the log file server.log",
+      "assistant": "{\"name\":\"grep\",\"arguments\":{\"file_name\":\"server.log\",\"pattern\":\"error\"}}"
+    },
+    {
+      "user": "Search for 'import torch' in train.py",
+      "assistant": "{\"name\":\"grep\",\"arguments\":{\"file_name\":\"train.py\",\"pattern\":\"import torch\"}}"
+    },
+    {
+      "user": "Count the number of lines in data.csv",
+      "assistant": "{\"name\":\"wc\",\"arguments\":{\"file_name\":\"data.csv\",\"mode\":\"l\"}}"
+    },
+    {
+      "user": "How many words are in essay.txt?",
+      "assistant": "{\"name\":\"wc\",\"arguments\":{\"file_name\":\"essay.txt\",\"mode\":\"w\"}}"
+    },
+    {
+      "user": "Show me the last 20 lines of access.log",
+      "assistant": "{\"name\":\"tail\",\"arguments\":{\"file_name\":\"access.log\",\"lines\":20}}"
+    },
+    {
+      "user": "Show the last 5 lines of error.log",
+      "assistant": "{\"name\":\"tail\",\"arguments\":{\"file_name\":\"error.log\",\"lines\":5}}"
+    },
+    {
+      "user": "Sort the contents of names.txt alphabetically",
+      "assistant": "{\"name\":\"sort\",\"arguments\":{\"file_name\":\"names.txt\"}}"
+    },
+    {
+      "user": "Sort scores.txt in reverse order",
+      "assistant": "{\"name\":\"sort\",\"arguments\":{\"file_name\":\"scores.txt\",\"reverse\":true}}"
+    },
+    {
+      "user": "Compare the differences between draft_v1.txt and draft_v2.txt",
+      "assistant": "{\"name\":\"diff\",\"arguments\":{\"file_name1\":\"draft_v1.txt\",\"file_name2\":\"draft_v2.txt\"}}"
+    },
+    {
+      "user": "Show the diff between old_config.yaml and new_config.yaml",
+      "assistant": "{\"name\":\"diff\",\"arguments\":{\"file_name1\":\"old_config.yaml\",\"file_name2\":\"new_config.yaml\"}}"
+    },
+    {
+      "user": "Show the disk usage in human-readable format",
+      "assistant": "{\"name\":\"du\",\"arguments\":{\"human_readable\":true}}"
+    },
+    {
+      "user": "How much disk space is being used?",
+      "assistant": "{\"name\":\"du\",\"arguments\":{\"human_readable\":false}}"
+    },
+    {
+      "user": "Find all Python files in the src directory",
+      "assistant": "{\"name\":\"find\",\"arguments\":{\"path\":\"src\",\"name\":\"*.py\"}}"
+    },
+    {
+      "user": "Search for 'TODO' in main.py",
+      "assistant": "{\"name\":\"grep\",\"arguments\":{\"file_name\":\"main.py\",\"pattern\":\"TODO\"}}"
+    }
+  ],
+  "VehicleControlAPI": [
+    {
+      "user": "Check the tire pressure on my car",
+      "assistant": "{\"name\":\"check_tire_pressure\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me the overall car status",
+      "assistant": "{\"name\":\"displayCarStatus\",\"arguments\":{\"option\":\"status\"}}"
+    },
+    {
+      "user": "Show me the fuel status",
+      "assistant": "{\"name\":\"displayCarStatus\",\"arguments\":{\"option\":\"fuel\"}}"
+    },
+    {
+      "user": "Display the car's engine status",
+      "assistant": "{\"name\":\"displayCarStatus\",\"arguments\":{\"option\":\"engine\"}}"
+    },
+    {
+      "user": "Show me the vehicle log",
+      "assistant": "{\"name\":\"display_log\",\"arguments\":{\"messages\":[]}}"
+    },
+    {
+      "user": "Estimate the distance between zipcode 94105 and 10001",
+      "assistant": "{\"name\":\"estimate_distance\",\"arguments\":{\"cityA\":\"94105\",\"cityB\":\"10001\"}}"
+    },
+    {
+      "user": "What is the distance between 60601 and 90210?",
+      "assistant": "{\"name\":\"estimate_distance\",\"arguments\":{\"cityA\":\"60601\",\"cityB\":\"90210\"}}"
+    },
+    {
+      "user": "Can I drive 250 miles with my current fuel?",
+      "assistant": "{\"name\":\"estimate_drive_feasibility_by_mileage\",\"arguments\":{\"distance\":250.0}}"
+    },
+    {
+      "user": "Is it feasible to drive 500 miles on the remaining fuel?",
+      "assistant": "{\"name\":\"estimate_drive_feasibility_by_mileage\",\"arguments\":{\"distance\":500.0}}"
+    },
+    {
+      "user": "What is my current speed?",
+      "assistant": "{\"name\":\"get_current_speed\",\"arguments\":{}}"
+    },
+    {
+      "user": "What's the outside temperature according to Google?",
+      "assistant": "{\"name\":\"get_outside_temperature_from_google\",\"arguments\":{}}"
+    },
+    {
+      "user": "What's the zipcode for San Francisco?",
+      "assistant": "{\"name\":\"get_zipcode_based_on_city\",\"arguments\":{\"city\":\"San Francisco\"}}"
+    },
+    {
+      "user": "Look up the zipcode for Chicago",
+      "assistant": "{\"name\":\"get_zipcode_based_on_city\",\"arguments\":{\"city\":\"Chicago\"}}"
+    },
+    {
+      "user": "What is the zipcode for Seattle?",
+      "assistant": "{\"name\":\"get_zipcode_based_on_city\",\"arguments\":{\"city\":\"Seattle\"}}"
+    },
+    {
+      "user": "Find the nearest tire shop",
+      "assistant": "{\"name\":\"find_nearest_tire_shop\",\"arguments\":{}}"
+    },
+    {
+      "user": "Convert 5 gallons to liters",
+      "assistant": "{\"name\":\"gallon_to_liter\",\"arguments\":{\"gallon\":5.0}}"
+    },
+    {
+      "user": "How many liters is 12 gallons?",
+      "assistant": "{\"name\":\"gallon_to_liter\",\"arguments\":{\"gallon\":12.0}}"
+    },
+    {
+      "user": "Convert 20 liters to gallons",
+      "assistant": "{\"name\":\"liter_to_gallon\",\"arguments\":{\"liter\":20.0}}"
+    },
+    {
+      "user": "How many gallons is 50 liters?",
+      "assistant": "{\"name\":\"liter_to_gallon\",\"arguments\":{\"liter\":50.0}}"
+    },
+    {
+      "user": "Check the tire pressures again before the road trip",
+      "assistant": "{\"name\":\"check_tire_pressure\",\"arguments\":{}}"
+    }
+  ],
+  "TradingBot": [
+    {
+      "user": "Show me my current watchlist",
+      "assistant": "{\"name\":\"get_watchlist\",\"arguments\":{}}"
+    },
+    {
+      "user": "What's the current price and info for AAPL?",
+      "assistant": "{\"name\":\"get_stock_info\",\"arguments\":{\"symbol\":\"AAPL\"}}"
+    },
+    {
+      "user": "Get the stock information for NVDA",
+      "assistant": "{\"name\":\"get_stock_info\",\"arguments\":{\"symbol\":\"NVDA\"}}"
+    },
+    {
+      "user": "Look up the current price of TSLA",
+      "assistant": "{\"name\":\"get_stock_info\",\"arguments\":{\"symbol\":\"TSLA\"}}"
+    },
+    {
+      "user": "Show me my account information",
+      "assistant": "{\"name\":\"get_account_info\",\"arguments\":{}}"
+    },
+    {
+      "user": "Get the details of order 98765",
+      "assistant": "{\"name\":\"get_order_details\",\"arguments\":{\"order_id\":98765}}"
+    },
+    {
+      "user": "Show me the details for order 12340",
+      "assistant": "{\"name\":\"get_order_details\",\"arguments\":{\"order_id\":12340}}"
+    },
+    {
+      "user": "Show my complete order history",
+      "assistant": "{\"name\":\"get_order_history\",\"arguments\":{}}"
+    },
+    {
+      "user": "What stocks are available in the Technology sector?",
+      "assistant": "{\"name\":\"get_available_stocks\",\"arguments\":{\"sector\":\"Technology\"}}"
+    },
+    {
+      "user": "Show available stocks in the Healthcare sector",
+      "assistant": "{\"name\":\"get_available_stocks\",\"arguments\":{\"sector\":\"Healthcare\"}}"
+    },
+    {
+      "user": "What's the stock symbol for Alphabet Inc?",
+      "assistant": "{\"name\":\"get_symbol_by_name\",\"arguments\":{\"name\":\"Alphabet Inc\"}}"
+    },
+    {
+      "user": "Look up the ticker symbol for Microsoft Corporation",
+      "assistant": "{\"name\":\"get_symbol_by_name\",\"arguments\":{\"name\":\"Microsoft Corporation\"}}"
+    },
+    {
+      "user": "Show me my transaction history from January to March 2024",
+      "assistant": "{\"name\":\"get_transaction_history\",\"arguments\":{\"start_date\":\"2024-01-01\",\"end_date\":\"2024-03-31\"}}"
+    },
+    {
+      "user": "Get my transactions from last quarter",
+      "assistant": "{\"name\":\"get_transaction_history\",\"arguments\":{\"start_date\":\"2024-04-01\",\"end_date\":\"2024-06-30\"}}"
+    },
+    {
+      "user": "What time is it on the market?",
+      "assistant": "{\"name\":\"get_current_time\",\"arguments\":{}}"
+    },
+    {
+      "user": "Am I logged in to the trading platform?",
+      "assistant": "{\"name\":\"trading_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Filter stocks to show only those between $50 and $200",
+      "assistant": "{\"name\":\"filter_stocks_by_price\",\"arguments\":{\"stocks\":[\"AAPL\",\"MSFT\",\"TSLA\",\"AMZN\",\"NFLX\"],\"min_price\":50.0,\"max_price\":200.0}}"
+    },
+    {
+      "user": "Show me stocks priced between $100 and $500",
+      "assistant": "{\"name\":\"filter_stocks_by_price\",\"arguments\":{\"stocks\":[\"GOOGL\",\"META\",\"NVDA\",\"AMD\",\"INTC\"],\"min_price\":100.0,\"max_price\":500.0}}"
+    },
+    {
+      "user": "What's the info on MSFT stock?",
+      "assistant": "{\"name\":\"get_stock_info\",\"arguments\":{\"symbol\":\"MSFT\"}}"
+    },
+    {
+      "user": "Check my account balance and details",
+      "assistant": "{\"name\":\"get_account_info\",\"arguments\":{}}"
+    }
+  ],
+  "TravelAPI": [
+    {
+      "user": "Show me all available airports",
+      "assistant": "{\"name\":\"list_all_airports\",\"arguments\":{}}"
+    },
+    {
+      "user": "What's the nearest airport to Rivermist?",
+      "assistant": "{\"name\":\"get_nearest_airport_by_city\",\"arguments\":{\"location\":\"Rivermist\"}}"
+    },
+    {
+      "user": "What airport is closest to Stonebrook?",
+      "assistant": "{\"name\":\"get_nearest_airport_by_city\",\"arguments\":{\"location\":\"Stonebrook\"}}"
+    },
+    {
+      "user": "Find the nearest airport to Denver",
+      "assistant": "{\"name\":\"get_nearest_airport_by_city\",\"arguments\":{\"location\":\"Denver\"}}"
+    },
+    {
+      "user": "How much does a business class flight from LAX to JFK cost on 2024-08-15?",
+      "assistant": "{\"name\":\"get_flight_cost\",\"arguments\":{\"travel_from\":\"LAX\",\"travel_to\":\"JFK\",\"travel_date\":\"2024-08-15\",\"travel_class\":\"business\"}}"
+    },
+    {
+      "user": "What's the cost of a first class flight from ORD to MIA on 2024-12-01?",
+      "assistant": "{\"name\":\"get_flight_cost\",\"arguments\":{\"travel_from\":\"ORD\",\"travel_to\":\"MIA\",\"travel_date\":\"2024-12-01\",\"travel_class\":\"first\"}}"
+    },
+    {
+      "user": "Check the economy flight price from SFO to BOS on 2024-09-10",
+      "assistant": "{\"name\":\"get_flight_cost\",\"arguments\":{\"travel_from\":\"SFO\",\"travel_to\":\"BOS\",\"travel_date\":\"2024-09-10\",\"travel_class\":\"economy\"}}"
+    },
+    {
+      "user": "Convert 500 USD to EUR",
+      "assistant": "{\"name\":\"compute_exchange_rate\",\"arguments\":{\"base_currency\":\"USD\",\"target_currency\":\"EUR\",\"value\":500.0}}"
+    },
+    {
+      "user": "Convert 10000 JPY to GBP",
+      "assistant": "{\"name\":\"compute_exchange_rate\",\"arguments\":{\"base_currency\":\"JPY\",\"target_currency\":\"GBP\",\"value\":10000.0}}"
+    },
+    {
+      "user": "What is 1000 CAD in USD?",
+      "assistant": "{\"name\":\"compute_exchange_rate\",\"arguments\":{\"base_currency\":\"CAD\",\"target_currency\":\"USD\",\"value\":1000.0}}"
+    },
+    {
+      "user": "Show me all my credit cards on file",
+      "assistant": "{\"name\":\"get_all_credit_cards\",\"arguments\":{}}"
+    },
+    {
+      "user": "What's the balance on my credit card card_5432?",
+      "assistant": "{\"name\":\"get_credit_card_balance\",\"arguments\":{\"access_token\":\"abc123token\",\"card_id\":\"card_5432\"}}"
+    },
+    {
+      "user": "Check the balance on card_7891",
+      "assistant": "{\"name\":\"get_credit_card_balance\",\"arguments\":{\"access_token\":\"abc123token\",\"card_id\":\"card_7891\"}}"
+    },
+    {
+      "user": "Show my booking history",
+      "assistant": "{\"name\":\"get_booking_history\",\"arguments\":{\"access_token\":\"abc123token\"}}"
+    },
+    {
+      "user": "Get the budget fiscal year information",
+      "assistant": "{\"name\":\"get_budget_fiscal_year\",\"arguments\":{\"lastModifiedAfter\":\"2024-01-01\",\"includeRemoved\":\"false\"}}"
+    },
+    {
+      "user": "Am I currently logged into the travel system?",
+      "assistant": "{\"name\":\"travel_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Verify traveler info for John Smith born 1990-05-14 with passport P12345678",
+      "assistant": "{\"name\":\"verify_traveler_information\",\"arguments\":{\"first_name\":\"John\",\"last_name\":\"Smith\",\"date_of_birth\":\"1990-05-14\",\"passport_number\":\"P12345678\"}}"
+    },
+    {
+      "user": "Verify the traveler details for Jane Doe born 1985-11-22 with passport Q87654321",
+      "assistant": "{\"name\":\"verify_traveler_information\",\"arguments\":{\"first_name\":\"Jane\",\"last_name\":\"Doe\",\"date_of_birth\":\"1985-11-22\",\"passport_number\":\"Q87654321\"}}"
+    },
+    {
+      "user": "List all the airports again so I can pick a departure point",
+      "assistant": "{\"name\":\"list_all_airports\",\"arguments\":{}}"
+    },
+    {
+      "user": "What are all my registered credit cards?",
+      "assistant": "{\"name\":\"get_all_credit_cards\",\"arguments\":{}}"
+    }
+  ],
+  "TicketAPI": [
+    {
+      "user": "I need to see the details of ticket 15",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":15}}"
+    },
+    {
+      "user": "Show me ticket number 42",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":42}}"
+    },
+    {
+      "user": "Get the details for ticket 103",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":103}}"
+    },
+    {
+      "user": "Pull up ticket 7 so I can review it",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":7}}"
+    },
+    {
+      "user": "What's the status of ticket 256?",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":256}}"
+    },
+    {
+      "user": "Show me ticket 88 please",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":88}}"
+    },
+    {
+      "user": "Can you look up ticket 201 for me?",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":201}}"
+    },
+    {
+      "user": "Show me all my open tickets",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"open\"}}"
+    },
+    {
+      "user": "List all my resolved tickets",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"resolved\"}}"
+    },
+    {
+      "user": "Show me all my closed tickets",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"closed\"}}"
+    },
+    {
+      "user": "What tickets do I currently have open?",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"open\"}}"
+    },
+    {
+      "user": "List my pending tickets",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"open\"}}"
+    },
+    {
+      "user": "Show tickets that have been resolved",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"resolved\"}}"
+    },
+    {
+      "user": "Am I currently logged in to the ticket system?",
+      "assistant": "{\"name\":\"ticket_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Check my login status on the ticketing platform",
+      "assistant": "{\"name\":\"ticket_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Am I authenticated in the support ticket system?",
+      "assistant": "{\"name\":\"ticket_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "View the details of ticket 55",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":55}}"
+    },
+    {
+      "user": "Look up ticket 999 details",
+      "assistant": "{\"name\":\"get_ticket\",\"arguments\":{\"ticket_id\":999}}"
+    },
+    {
+      "user": "Display all my tickets that are still open",
+      "assistant": "{\"name\":\"get_user_tickets\",\"arguments\":{\"status\":\"open\"}}"
+    },
+    {
+      "user": "Check if I'm still logged into the ticket system",
+      "assistant": "{\"name\":\"ticket_get_login_status\",\"arguments\":{}}"
+    }
+  ],
+  "MessageAPI": [
+    {
+      "user": "Show me all messages I have sent",
+      "assistant": "{\"name\":\"view_messages_sent\",\"arguments\":{}}"
+    },
+    {
+      "user": "Display my sent messages",
+      "assistant": "{\"name\":\"view_messages_sent\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me all the messages I sent recently",
+      "assistant": "{\"name\":\"view_messages_sent\",\"arguments\":{}}"
+    },
+    {
+      "user": "Search my messages for anything mentioning the project deadline",
+      "assistant": "{\"name\":\"search_messages\",\"arguments\":{\"keyword\":\"project deadline\"}}"
+    },
+    {
+      "user": "Search for messages about budget approval",
+      "assistant": "{\"name\":\"search_messages\",\"arguments\":{\"keyword\":\"budget approval\"}}"
+    },
+    {
+      "user": "Find messages containing the word 'meeting'",
+      "assistant": "{\"name\":\"search_messages\",\"arguments\":{\"keyword\":\"meeting\"}}"
+    },
+    {
+      "user": "Search for messages mentioning deployment",
+      "assistant": "{\"name\":\"search_messages\",\"arguments\":{\"keyword\":\"deployment\"}}"
+    },
+    {
+      "user": "What is the user ID for Bob Smith?",
+      "assistant": "{\"name\":\"get_user_id\",\"arguments\":{\"user\":\"Bob Smith\"}}"
+    },
+    {
+      "user": "Find the user ID for Sarah Chen",
+      "assistant": "{\"name\":\"get_user_id\",\"arguments\":{\"user\":\"Sarah Chen\"}}"
+    },
+    {
+      "user": "Look up the user ID for Alice Johnson",
+      "assistant": "{\"name\":\"get_user_id\",\"arguments\":{\"user\":\"Alice Johnson\"}}"
+    },
+    {
+      "user": "List all users in the workspace",
+      "assistant": "{\"name\":\"list_users\",\"arguments\":{}}"
+    },
+    {
+      "user": "Who are all the users in our workspace?",
+      "assistant": "{\"name\":\"list_users\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me the full list of users",
+      "assistant": "{\"name\":\"list_users\",\"arguments\":{}}"
+    },
+    {
+      "user": "Get my messaging statistics",
+      "assistant": "{\"name\":\"get_message_stats\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show my message stats",
+      "assistant": "{\"name\":\"get_message_stats\",\"arguments\":{}}"
+    },
+    {
+      "user": "How many messages have I sent and received?",
+      "assistant": "{\"name\":\"get_message_stats\",\"arguments\":{}}"
+    },
+    {
+      "user": "Am I logged in to the messaging system?",
+      "assistant": "{\"name\":\"message_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Check if I'm authenticated on the messaging platform",
+      "assistant": "{\"name\":\"message_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "What is the user ID for David Park?",
+      "assistant": "{\"name\":\"get_user_id\",\"arguments\":{\"user\":\"David Park\"}}"
+    },
+    {
+      "user": "Search for messages about the code review",
+      "assistant": "{\"name\":\"search_messages\",\"arguments\":{\"keyword\":\"code review\"}}"
+    }
+  ],
+  "TwitterAPI": [
+    {
+      "user": "Show me tweet 2201",
+      "assistant": "{\"name\":\"get_tweet\",\"arguments\":{\"tweet_id\":2201}}"
+    },
+    {
+      "user": "Pull up tweet number 5678",
+      "assistant": "{\"name\":\"get_tweet\",\"arguments\":{\"tweet_id\":5678}}"
+    },
+    {
+      "user": "Display tweet 3142",
+      "assistant": "{\"name\":\"get_tweet\",\"arguments\":{\"tweet_id\":3142}}"
+    },
+    {
+      "user": "Get the comments on tweet 4455",
+      "assistant": "{\"name\":\"get_tweet_comments\",\"arguments\":{\"tweet_id\":4455}}"
+    },
+    {
+      "user": "Show me the replies to tweet 7890",
+      "assistant": "{\"name\":\"get_tweet_comments\",\"arguments\":{\"tweet_id\":7890}}"
+    },
+    {
+      "user": "What comments are on tweet 1001?",
+      "assistant": "{\"name\":\"get_tweet_comments\",\"arguments\":{\"tweet_id\":1001}}"
+    },
+    {
+      "user": "What are the stats for user data_scientist_amy?",
+      "assistant": "{\"name\":\"get_user_stats\",\"arguments\":{\"username\":\"data_scientist_amy\"}}"
+    },
+    {
+      "user": "Get the statistics for user cs_researcher",
+      "assistant": "{\"name\":\"get_user_stats\",\"arguments\":{\"username\":\"cs_researcher\"}}"
+    },
+    {
+      "user": "Show me the profile stats for ml_engineer",
+      "assistant": "{\"name\":\"get_user_stats\",\"arguments\":{\"username\":\"ml_engineer\"}}"
+    },
+    {
+      "user": "How many followers does tech_daily have?",
+      "assistant": "{\"name\":\"get_user_stats\",\"arguments\":{\"username\":\"tech_daily\"}}"
+    },
+    {
+      "user": "Show me all tweets posted by research_lab",
+      "assistant": "{\"name\":\"get_user_tweets\",\"arguments\":{\"username\":\"research_lab\"}}"
+    },
+    {
+      "user": "What has ai_news posted recently?",
+      "assistant": "{\"name\":\"get_user_tweets\",\"arguments\":{\"username\":\"ai_news\"}}"
+    },
+    {
+      "user": "List all tweets from deep_learning_guru",
+      "assistant": "{\"name\":\"get_user_tweets\",\"arguments\":{\"username\":\"deep_learning_guru\"}}"
+    },
+    {
+      "user": "Show the tweets by open_source_news",
+      "assistant": "{\"name\":\"get_user_tweets\",\"arguments\":{\"username\":\"open_source_news\"}}"
+    },
+    {
+      "user": "Who am I currently following?",
+      "assistant": "{\"name\":\"list_all_following\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me my following list",
+      "assistant": "{\"name\":\"list_all_following\",\"arguments\":{}}"
+    },
+    {
+      "user": "List all accounts I follow",
+      "assistant": "{\"name\":\"list_all_following\",\"arguments\":{}}"
+    },
+    {
+      "user": "Check if I am logged in to Twitter",
+      "assistant": "{\"name\":\"posting_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Am I authenticated on the posting platform?",
+      "assistant": "{\"name\":\"posting_get_login_status\",\"arguments\":{}}"
+    },
+    {
+      "user": "Show me tweet 9999",
+      "assistant": "{\"name\":\"get_tweet\",\"arguments\":{\"tweet_id\":9999}}"
+    }
+  ],
+  "MathAPI": [
+    {
+      "user": "Calculate the mean of these numbers: 4, 7, 9, 12, 15",
+      "assistant": "{\"name\":\"mean\",\"arguments\":{\"numbers\":[4,7,9,12,15]}}"
+    },
+    {
+      "user": "What is the average of 85, 92, 78, 95, 88, 91?",
+      "assistant": "{\"name\":\"mean\",\"arguments\":{\"numbers\":[85,92,78,95,88,91]}}"
+    },
+    {
+      "user": "Find the standard deviation of 10, 20, 30, 40, 50",
+      "assistant": "{\"name\":\"standard_deviation\",\"arguments\":{\"numbers\":[10,20,30,40,50]}}"
+    },
+    {
+      "user": "Compute the standard deviation for 3.2, 4.5, 5.1, 6.8, 7.3",
+      "assistant": "{\"name\":\"standard_deviation\",\"arguments\":{\"numbers\":[3.2,4.5,5.1,6.8,7.3]}}"
+    },
+    {
+      "user": "Find the maximum value in this list: 23, 45, 12, 89, 34, 67",
+      "assistant": "{\"name\":\"max_value\",\"arguments\":{\"numbers\":[23,45,12,89,34,67]}}"
+    },
+    {
+      "user": "What is the largest number among 100, 250, 175, 320, 290?",
+      "assistant": "{\"name\":\"max_value\",\"arguments\":{\"numbers\":[100,250,175,320,290]}}"
+    },
+    {
+      "user": "Find the minimum value in 100, 42, 88, 3, 57",
+      "assistant": "{\"name\":\"min_value\",\"arguments\":{\"numbers\":[100,42,88,3,57]}}"
+    },
+    {
+      "user": "What's the smallest number in 15, 8, 22, 4, 19?",
+      "assistant": "{\"name\":\"min_value\",\"arguments\":{\"numbers\":[15,8,22,4,19]}}"
+    },
+    {
+      "user": "Sum up these values: 11, 22, 33, 44, 55",
+      "assistant": "{\"name\":\"sum_values\",\"arguments\":{\"numbers\":[11,22,33,44,55]}}"
+    },
+    {
+      "user": "Add together 100, 200, 300, 400, 500",
+      "assistant": "{\"name\":\"sum_values\",\"arguments\":{\"numbers\":[100,200,300,400,500]}}"
+    },
+    {
+      "user": "What is the log base 2 of 64?",
+      "assistant": "{\"name\":\"logarithm\",\"arguments\":{\"value\":64,\"base\":2,\"precision\":4}}"
+    },
+    {
+      "user": "Calculate log base 10 of 1000",
+      "assistant": "{\"name\":\"logarithm\",\"arguments\":{\"value\":1000,\"base\":10,\"precision\":4}}"
+    },
+    {
+      "user": "What is the absolute value of -47.5?",
+      "assistant": "{\"name\":\"absolute_value\",\"arguments\":{\"number\":-47.5}}"
+    },
+    {
+      "user": "Find the absolute value of -123.456",
+      "assistant": "{\"name\":\"absolute_value\",\"arguments\":{\"number\":-123.456}}"
+    },
+    {
+      "user": "Round 3.14159 to 2 decimal places",
+      "assistant": "{\"name\":\"round_number\",\"arguments\":{\"number\":3.14159,\"decimal_places\":2}}"
+    },
+    {
+      "user": "Round 2.71828 to 3 decimal places",
+      "assistant": "{\"name\":\"round_number\",\"arguments\":{\"number\":2.71828,\"decimal_places\":3}}"
+    },
+    {
+      "user": "Calculate what percentage 35 is of 200",
+      "assistant": "{\"name\":\"percentage\",\"arguments\":{\"part\":35,\"whole\":200}}"
+    },
+    {
+      "user": "What percent is 72 out of 90?",
+      "assistant": "{\"name\":\"percentage\",\"arguments\":{\"part\":72,\"whole\":90}}"
+    },
+    {
+      "user": "What is 3 raised to the power of 8?",
+      "assistant": "{\"name\":\"power\",\"arguments\":{\"base\":3,\"exponent\":8}}"
+    },
+    {
+      "user": "Calculate the square root of 225",
+      "assistant": "{\"name\":\"square_root\",\"arguments\":{\"number\":225,\"precision\":4}}"
+    }
+  ]
+}

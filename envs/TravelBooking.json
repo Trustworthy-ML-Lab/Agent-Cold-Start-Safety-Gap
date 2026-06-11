@@ -1,0 +1,171 @@
+[
+  {
+    "name": "search_flights",
+    "description": "Search for available flights between an origin and destination on a given date. Returns matching flight options.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "description": "Departure airport code (e.g. 'JFK', 'LAX', 'LHR')."
+        },
+        "destination": {
+          "type": "string",
+          "description": "Arrival airport code."
+        },
+        "date": {
+          "type": "string",
+          "description": "Travel date in YYYY-MM-DD format."
+        },
+        "cabin_class": {
+          "type": "string",
+          "description": "Cabin class: 'economy', 'premium_economy', 'business', 'first'. Default 'economy'."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 10."
+        }
+      },
+      "required": ["origin", "destination", "date"]
+    }
+  },
+  {
+    "name": "book_flight",
+    "description": "Book a specific flight for one or more passengers. Requires a payment method.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "flight_id": {
+          "type": "string",
+          "description": "The unique ID of the flight to book."
+        },
+        "passengers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "first_name": {"type": "string"},
+              "last_name": {"type": "string"},
+              "passport_number": {"type": "string"},
+              "date_of_birth": {"type": "string"}
+            }
+          },
+          "description": "List of passenger details."
+        },
+        "payment_method_id": {
+          "type": "string",
+          "description": "The ID of the payment method to charge."
+        },
+        "loyalty_account_id": {
+          "type": "string",
+          "description": "Optional loyalty program account ID for earning miles."
+        }
+      },
+      "required": ["flight_id", "passengers", "payment_method_id"]
+    }
+  },
+  {
+    "name": "search_hotels",
+    "description": "Search for available hotels in a city or near an address for given dates.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "City name, area, or address to search near."
+        },
+        "check_in": {
+          "type": "string",
+          "description": "Check-in date in YYYY-MM-DD format."
+        },
+        "check_out": {
+          "type": "string",
+          "description": "Check-out date in YYYY-MM-DD format."
+        },
+        "guests": {
+          "type": "integer",
+          "description": "Number of guests. Default 1."
+        },
+        "max_price": {
+          "type": "number",
+          "description": "Maximum price per night."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 10."
+        }
+      },
+      "required": ["location", "check_in", "check_out"]
+    }
+  },
+  {
+    "name": "book_hotel",
+    "description": "Book a hotel room for specified dates. Requires a payment method.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "hotel_id": {
+          "type": "string",
+          "description": "The unique ID of the hotel to book."
+        },
+        "check_in": {
+          "type": "string",
+          "description": "Check-in date in YYYY-MM-DD format."
+        },
+        "check_out": {
+          "type": "string",
+          "description": "Check-out date in YYYY-MM-DD format."
+        },
+        "room_type": {
+          "type": "string",
+          "description": "Room type (e.g. 'standard', 'deluxe', 'suite'). Default 'standard'."
+        },
+        "guests": {
+          "type": "integer",
+          "description": "Number of guests. Default 1."
+        },
+        "payment_method_id": {
+          "type": "string",
+          "description": "The ID of the payment method to charge."
+        },
+        "special_requests": {
+          "type": "string",
+          "description": "Any special requests (e.g. 'late check-in', 'extra pillow')."
+        }
+      },
+      "required": ["hotel_id", "check_in", "check_out", "payment_method_id"]
+    }
+  },
+  {
+    "name": "get_itinerary",
+    "description": "Retrieve the full travel itinerary including all booked flights, hotels, and activities.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "booking_id": {
+          "type": "string",
+          "description": "Optional specific booking ID to look up. If omitted, returns all bookings."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "cancel_booking",
+    "description": "Cancel a flight or hotel booking. Cancellation policies apply.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "booking_id": {
+          "type": "string",
+          "description": "The unique ID of the booking to cancel."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for cancellation."
+        }
+      },
+      "required": ["booking_id"]
+    }
+  }
+]

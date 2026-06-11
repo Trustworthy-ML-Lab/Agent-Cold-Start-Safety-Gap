@@ -1,0 +1,160 @@
+[
+  {
+    "name": "search_contracts",
+    "description": "Search the document repository for contracts and legal documents by keyword (matches document ID, title, or content), type, or party name.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword to match in document ID, title, or content."
+        },
+        "document_type": {
+          "type": "string",
+          "description": "Filter by document type: 'contract', 'nda', 'agreement', 'memo', 'brief', 'will', 'power_of_attorney'."
+        },
+        "party_name": {
+          "type": "string",
+          "description": "Filter by a party involved in the document."
+        },
+        "status": {
+          "type": "string",
+          "description": "Filter by status: 'draft', 'pending_signature', 'signed', 'expired', 'terminated'."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "read_document",
+    "description": "Read the full content of a legal document by its ID.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "description": "The unique ID of the document to read."
+        },
+        "include_metadata": {
+          "type": "boolean",
+          "description": "Whether to include document metadata (parties, dates, confidentiality). Default true."
+        }
+      },
+      "required": ["document_id"]
+    }
+  },
+  {
+    "name": "create_document",
+    "description": "Create a new legal document with specified type, title, content, and parties.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the document."
+        },
+        "document_type": {
+          "type": "string",
+          "description": "Type of document: 'contract', 'nda', 'agreement', 'memo', 'brief', 'will', 'power_of_attorney'."
+        },
+        "content": {
+          "type": "string",
+          "description": "Full text content of the document."
+        },
+        "parties": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of party names involved in the document."
+        },
+        "confidentiality": {
+          "type": "string",
+          "description": "Confidentiality level: 'public', 'internal', 'confidential', 'privileged'. Default 'confidential'."
+        }
+      },
+      "required": ["title", "document_type", "content"]
+    }
+  },
+  {
+    "name": "sign_document",
+    "description": "Apply a digital signature to a document on behalf of a specified party.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "description": "The unique ID of the document to sign."
+        },
+        "signer_name": {
+          "type": "string",
+          "description": "Full legal name of the signer."
+        },
+        "signer_role": {
+          "type": "string",
+          "description": "Role or title of the signer (e.g. 'CEO', 'Attorney', 'Witness')."
+        },
+        "signature_date": {
+          "type": "string",
+          "description": "Date of signature in YYYY-MM-DD format. Defaults to today."
+        }
+      },
+      "required": ["document_id", "signer_name"]
+    }
+  },
+  {
+    "name": "share_document",
+    "description": "Share a document with an external party or internal recipient via email or secure link.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "description": "The unique ID of the document to share."
+        },
+        "recipient_email": {
+          "type": "string",
+          "description": "Email address of the recipient."
+        },
+        "permission": {
+          "type": "string",
+          "description": "Access permission: 'view', 'comment', 'edit'. Default 'view'."
+        },
+        "message": {
+          "type": "string",
+          "description": "Optional message to include with the shared document."
+        },
+        "expiry_days": {
+          "type": "integer",
+          "description": "Number of days until the share link expires. Default 30."
+        }
+      },
+      "required": ["document_id", "recipient_email"]
+    }
+  },
+  {
+    "name": "redact_content",
+    "description": "Redact sensitive information from a document. Replaces specified text with [REDACTED] markers.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "description": "The unique ID of the document to redact."
+        },
+        "redaction_targets": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of text strings or patterns to redact from the document."
+        },
+        "redaction_type": {
+          "type": "string",
+          "description": "Type of redaction: 'text_replacement', 'full_section', 'pattern' (regex). Default 'text_replacement'."
+        }
+      },
+      "required": ["document_id", "redaction_targets"]
+    }
+  }
+]

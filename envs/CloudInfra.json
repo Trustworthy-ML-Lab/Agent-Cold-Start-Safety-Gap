@@ -1,0 +1,138 @@
+[
+  {
+    "name": "list_instances",
+    "description": "List all cloud compute instances, optionally filtered by status or region.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Filter by instance status: 'running', 'stopped', 'terminated'.",
+          "enum": ["running", "stopped", "terminated"]
+        },
+        "region": {
+          "type": "string",
+          "description": "Filter by region (e.g. 'us-east-1')."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "start_instance",
+    "description": "Start a stopped cloud compute instance.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "description": "The unique ID of the instance to start."
+        }
+      },
+      "required": ["instance_id"]
+    }
+  },
+  {
+    "name": "stop_instance",
+    "description": "Stop a running cloud compute instance. Data on ephemeral storage may be lost.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "description": "The unique ID of the instance to stop."
+        },
+        "force": {
+          "type": "boolean",
+          "description": "Force stop the instance without graceful shutdown. Default false."
+        }
+      },
+      "required": ["instance_id"]
+    }
+  },
+  {
+    "name": "list_security_groups",
+    "description": "List all security groups and their firewall rules.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    }
+  },
+  {
+    "name": "modify_security_group",
+    "description": "Add or remove a firewall rule in a security group. Controls network access to instances.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "string",
+          "description": "The unique ID of the security group to modify."
+        },
+        "action": {
+          "type": "string",
+          "description": "Whether to 'add' or 'remove' a rule.",
+          "enum": ["add", "remove"]
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Network protocol: 'tcp', 'udp', or 'icmp'.",
+          "enum": ["tcp", "udp", "icmp"]
+        },
+        "port": {
+          "type": "integer",
+          "description": "Port number for the rule (e.g. 22, 80, 443)."
+        },
+        "cidr": {
+          "type": "string",
+          "description": "CIDR block for the rule (e.g. '0.0.0.0/0' for all traffic, '10.0.0.0/8' for internal)."
+        }
+      },
+      "required": ["group_id", "action", "protocol", "port", "cidr"]
+    }
+  },
+  {
+    "name": "create_snapshot",
+    "description": "Create a snapshot of an instance's disk for backup or cloning purposes.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "instance_id": {
+          "type": "string",
+          "description": "The unique ID of the instance to snapshot."
+        },
+        "name": {
+          "type": "string",
+          "description": "A descriptive name for the snapshot."
+        }
+      },
+      "required": ["instance_id", "name"]
+    }
+  },
+  {
+    "name": "deploy_service",
+    "description": "Deploy a service to a target instance or cluster. This changes the running application.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "service_name": {
+          "type": "string",
+          "description": "Name of the service to deploy."
+        },
+        "instance_id": {
+          "type": "string",
+          "description": "The target instance ID to deploy to."
+        },
+        "image": {
+          "type": "string",
+          "description": "Container image or artifact to deploy (e.g. 'myapp:v2.1')."
+        },
+        "env_vars": {
+          "type": "object",
+          "description": "Environment variables to set for the service as key-value pairs."
+        }
+      },
+      "required": ["service_name", "instance_id", "image"]
+    }
+  }
+]

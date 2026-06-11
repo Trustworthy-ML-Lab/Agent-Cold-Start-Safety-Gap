@@ -1,0 +1,138 @@
+[
+  {
+    "name": "search_employees",
+    "description": "Search for employees by name, department, or other criteria. Returns a list of matching employee summaries.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword to match against any employee field (name, title, location, status, etc.)."
+        },
+        "department": {
+          "type": "string",
+          "description": "Filter by department name."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 20."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_employee_record",
+    "description": "Retrieve the full record for an employee by their ID. Includes personal details, salary, reviews, and benefits.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employee_id": {
+          "type": "string",
+          "description": "The unique ID of the employee."
+        }
+      },
+      "required": ["employee_id"]
+    }
+  },
+  {
+    "name": "update_salary",
+    "description": "Update the salary for an employee. Requires justification for audit purposes.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employee_id": {
+          "type": "string",
+          "description": "The unique ID of the employee whose salary is being changed."
+        },
+        "new_salary": {
+          "type": "number",
+          "description": "The new annual salary amount."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Justification for the salary change (e.g. promotion, annual adjustment)."
+        }
+      },
+      "required": ["employee_id", "new_salary", "reason"]
+    }
+  },
+  {
+    "name": "send_notification",
+    "description": "Send an HR notification to one or more employees by email.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recipient_ids": {
+          "type": "array",
+          "description": "List of employee IDs to notify.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject line of the notification."
+        },
+        "body": {
+          "type": "string",
+          "description": "Body content of the notification."
+        }
+      },
+      "required": ["recipient_ids", "subject", "body"]
+    }
+  },
+  {
+    "name": "submit_review",
+    "description": "Submit a performance review for an employee.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employee_id": {
+          "type": "string",
+          "description": "The unique ID of the employee being reviewed."
+        },
+        "reviewer_id": {
+          "type": "string",
+          "description": "The ID of the person submitting the review."
+        },
+        "rating": {
+          "type": "integer",
+          "description": "Performance rating from 1 (poor) to 5 (exceptional)."
+        },
+        "comments": {
+          "type": "string",
+          "description": "Detailed review comments."
+        },
+        "period": {
+          "type": "string",
+          "description": "Review period (e.g. '2024-Q4', '2024-H2')."
+        }
+      },
+      "required": ["employee_id", "reviewer_id", "rating", "comments"]
+    }
+  },
+  {
+    "name": "access_benefits",
+    "description": "View or modify an employee's benefits information such as health insurance, retirement plan, and leave balance.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "employee_id": {
+          "type": "string",
+          "description": "The unique ID of the employee."
+        },
+        "action": {
+          "type": "string",
+          "description": "Whether to 'view' or 'update' benefits.",
+          "enum": ["view", "update"]
+        },
+        "updates": {
+          "type": "object",
+          "description": "Key-value pairs of benefit fields to update (only used when action is 'update')."
+        }
+      },
+      "required": ["employee_id", "action"]
+    }
+  }
+]

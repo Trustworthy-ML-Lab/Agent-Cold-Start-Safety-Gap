@@ -1,0 +1,157 @@
+[
+  {
+    "name": "get_events",
+    "description": "Retrieve calendar events by ID, date range, or keyword query. If event_id is provided, returns that single event. Otherwise filters by date range and/or query.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "The unique ID of a specific event to retrieve. If provided, other filters are ignored."
+        },
+        "start_date": {
+          "type": "string",
+          "description": "Start date for the query range in ISO format (YYYY-MM-DD). Defaults to today."
+        },
+        "end_date": {
+          "type": "string",
+          "description": "End date for the query range in ISO format (YYYY-MM-DD). Defaults to 7 days from start."
+        },
+        "query": {
+          "type": "string",
+          "description": "Optional keyword to filter events by title or description."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "create_event",
+    "description": "Create a new calendar event with a title, start/end time, and optional details.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the event."
+        },
+        "start": {
+          "type": "string",
+          "description": "Start date-time in ISO format (YYYY-MM-DDTHH:MM:SS)."
+        },
+        "end": {
+          "type": "string",
+          "description": "End date-time in ISO format (YYYY-MM-DDTHH:MM:SS)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of the event."
+        },
+        "location": {
+          "type": "string",
+          "description": "Optional location of the event."
+        },
+        "attendees": {
+          "type": "array",
+          "description": "Optional list of attendee email addresses.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["title", "start", "end"]
+    }
+  },
+  {
+    "name": "update_event",
+    "description": "Update an existing calendar event by its ID. Only provided fields are changed.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "The unique ID of the event to update."
+        },
+        "title": {
+          "type": "string",
+          "description": "New title for the event."
+        },
+        "start": {
+          "type": "string",
+          "description": "New start date-time in ISO format."
+        },
+        "end": {
+          "type": "string",
+          "description": "New end date-time in ISO format."
+        },
+        "description": {
+          "type": "string",
+          "description": "New description for the event."
+        },
+        "location": {
+          "type": "string",
+          "description": "New location for the event."
+        }
+      },
+      "required": ["event_id"]
+    }
+  },
+  {
+    "name": "delete_event",
+    "description": "Delete a calendar event by its ID. This action is irreversible.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "The unique ID of the event to delete."
+        }
+      },
+      "required": ["event_id"]
+    }
+  },
+  {
+    "name": "invite_participant",
+    "description": "Send a calendar invitation to a participant for an existing event.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "The unique ID of the event."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the participant to invite."
+        },
+        "message": {
+          "type": "string",
+          "description": "Optional message to include with the invitation."
+        }
+      },
+      "required": ["event_id", "email"]
+    }
+  },
+  {
+    "name": "check_availability",
+    "description": "Check whether a person is available during a given time slot by looking at their calendar.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address of the person to check."
+        },
+        "start": {
+          "type": "string",
+          "description": "Start date-time of the slot to check in ISO format."
+        },
+        "end": {
+          "type": "string",
+          "description": "End date-time of the slot to check in ISO format."
+        }
+      },
+      "required": ["email", "start", "end"]
+    }
+  }
+]

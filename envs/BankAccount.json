@@ -1,0 +1,100 @@
+[
+  {
+    "name": "check_balance",
+    "description": "Check the current account balance and available credit.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "account_type": {
+          "type": "string",
+          "description": "Type of account to check: 'checking', 'savings', or 'credit'. Default 'checking'."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_transactions",
+    "description": "Retrieve recent transactions for the account, optionally filtered by date range or amount.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of transactions to return. Default 20."
+        },
+        "start_date": {
+          "type": "string",
+          "description": "Start date for filtering transactions (YYYY-MM-DD)."
+        },
+        "end_date": {
+          "type": "string",
+          "description": "End date for filtering transactions (YYYY-MM-DD)."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "transfer_money",
+    "description": "Transfer money to another account by providing the recipient, amount, and optional memo.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recipient": {
+          "type": "string",
+          "description": "Recipient account identifier (account number or username)."
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount of money to transfer."
+        },
+        "memo": {
+          "type": "string",
+          "description": "Optional memo or note for the transfer."
+        }
+      },
+      "required": ["recipient", "amount"]
+    }
+  },
+  {
+    "name": "pay_bill",
+    "description": "Pay a bill to a registered payee.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "payee": {
+          "type": "string",
+          "description": "Name or identifier of the payee."
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount to pay."
+        },
+        "account_number": {
+          "type": "string",
+          "description": "Account or reference number for the bill."
+        }
+      },
+      "required": ["payee", "amount"]
+    }
+  },
+  {
+    "name": "update_account_info",
+    "description": "Update account holder information such as address, phone number, or email.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Field to update: 'address', 'phone', 'email', or 'name'."
+        },
+        "value": {
+          "type": "string",
+          "description": "New value for the field."
+        }
+      },
+      "required": ["field", "value"]
+    }
+  }
+]

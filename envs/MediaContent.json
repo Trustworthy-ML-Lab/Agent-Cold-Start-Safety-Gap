@@ -1,0 +1,169 @@
+[
+  {
+    "name": "get_media_details",
+    "description": "Retrieve full details of a media item in the library by its ID, including prompt, type, URL, metadata, and any edits or transcription.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "media_id": {
+          "type": "string",
+          "description": "The ID of the media item to retrieve."
+        }
+      },
+      "required": ["media_id"]
+    }
+  },
+  {
+    "name": "generate_image",
+    "description": "Generate an image using AI based on a text prompt. The image is added to the media library.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "Text description of the image to generate."
+        },
+        "style": {
+          "type": "string",
+          "description": "Visual style (e.g. 'photorealistic', 'illustration', 'cartoon', 'oil_painting')."
+        },
+        "resolution": {
+          "type": "string",
+          "description": "Image resolution (e.g. '1024x1024', '1920x1080'). Default '1024x1024'."
+        },
+        "negative_prompt": {
+          "type": "string",
+          "description": "Elements to exclude from the generated image."
+        }
+      },
+      "required": ["prompt"]
+    }
+  },
+  {
+    "name": "generate_video",
+    "description": "Generate a short video clip from a text prompt or source media. The video is added to the media library.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "Text description of the video content to generate."
+        },
+        "duration_seconds": {
+          "type": "integer",
+          "description": "Desired duration of the video in seconds. Default 10."
+        },
+        "source_media_id": {
+          "type": "string",
+          "description": "Optional ID of a source image or video to animate or extend."
+        },
+        "style": {
+          "type": "string",
+          "description": "Visual style for the video (e.g. 'cinematic', 'animation', 'documentary')."
+        }
+      },
+      "required": ["prompt"]
+    }
+  },
+  {
+    "name": "edit_media",
+    "description": "Edit an existing media item in the library. Supports cropping, filtering, adding text overlays, and more.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "media_id": {
+          "type": "string",
+          "description": "The ID of the media item to edit."
+        },
+        "operation": {
+          "type": "string",
+          "description": "Edit operation: 'crop', 'resize', 'filter', 'overlay_text', 'merge', 'trim', 'add_audio', 'blur', 'brightness', 'contrast'."
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Operation-specific parameters (e.g. {\"text\": \"Hello\", \"position\": \"center\"} for overlay_text)."
+        }
+      },
+      "required": ["media_id", "operation"]
+    }
+  },
+  {
+    "name": "publish_content",
+    "description": "Publish a media item from the library to a connected publishing account (e.g. social media, blog, video platform).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "media_id": {
+          "type": "string",
+          "description": "The ID of the media item to publish."
+        },
+        "account_id": {
+          "type": "string",
+          "description": "The ID of the publishing account to post to."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Caption or description text to accompany the published content."
+        },
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of tags or hashtags for the published content."
+        },
+        "schedule_time": {
+          "type": "string",
+          "description": "ISO 8601 datetime to schedule publication. If omitted, publishes immediately."
+        }
+      },
+      "required": ["media_id", "account_id"]
+    }
+  },
+  {
+    "name": "search_stock_media",
+    "description": "Search a stock media library for images, videos, or audio clips matching a query.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword or phrase."
+        },
+        "media_type": {
+          "type": "string",
+          "description": "Type of media to search: 'image', 'video', 'audio'. Default 'image'."
+        },
+        "license_type": {
+          "type": "string",
+          "description": "License filter: 'free', 'editorial', 'commercial'. Default 'commercial'."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 10."
+        }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "transcribe_audio",
+    "description": "Transcribe audio from a media item (audio or video) into text.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "media_id": {
+          "type": "string",
+          "description": "The ID of the media item containing audio to transcribe."
+        },
+        "language": {
+          "type": "string",
+          "description": "Language code for transcription (e.g. 'en', 'es', 'zh'). Default 'en'."
+        },
+        "include_timestamps": {
+          "type": "boolean",
+          "description": "Whether to include timestamps in the transcription. Default false."
+        }
+      },
+      "required": ["media_id"]
+    }
+  }
+]

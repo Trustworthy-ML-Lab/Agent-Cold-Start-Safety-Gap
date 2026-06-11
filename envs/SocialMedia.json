@@ -1,0 +1,146 @@
+[
+  {
+    "name": "get_post",
+    "description": "Retrieve a single post or message by its ID.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "post_id": {
+          "type": "string",
+          "description": "The ID of the post or message to retrieve (e.g. 'post_1234', 'msg_5678')."
+        }
+      },
+      "required": ["post_id"]
+    }
+  },
+  {
+    "name": "read_messages",
+    "description": "Read direct messages in the inbox, optionally filtered by sender.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "sender": {
+          "type": "string",
+          "description": "Filter messages by sender username. If omitted, returns all messages."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of messages to return. Default 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "search_posts",
+    "description": "Search posts and messages by keyword, hashtag, post ID, or author.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword, hashtag, or post/message ID."
+        },
+        "author": {
+          "type": "string",
+          "description": "Filter by author username."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of posts to return. Default 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "create_post",
+    "description": "Create a new post with text content and optional media attachment.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "Text content of the post."
+        },
+        "media_id": {
+          "type": "string",
+          "description": "Optional ID of a previously uploaded media item to attach."
+        },
+        "visibility": {
+          "type": "string",
+          "description": "Post visibility: 'public', 'followers', or 'private'. Default 'public'."
+        }
+      },
+      "required": ["content"]
+    }
+  },
+  {
+    "name": "send_message",
+    "description": "Send a direct message to another user.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "recipient": {
+          "type": "string",
+          "description": "Username of the message recipient."
+        },
+        "text": {
+          "type": "string",
+          "description": "Message text content."
+        }
+      },
+      "required": ["recipient", "text"]
+    }
+  },
+  {
+    "name": "get_profile",
+    "description": "Retrieve a user's public profile information.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Username of the profile to retrieve."
+        }
+      },
+      "required": ["username"]
+    }
+  },
+  {
+    "name": "follow_user",
+    "description": "Follow or unfollow another user.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Username of the user to follow or unfollow."
+        },
+        "action": {
+          "type": "string",
+          "description": "Action to take: 'follow' or 'unfollow'. Default 'follow'."
+        }
+      },
+      "required": ["username"]
+    }
+  },
+  {
+    "name": "upload_media",
+    "description": "Upload an image or video file for use in posts.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "description": "Local file path of the media to upload."
+        },
+        "alt_text": {
+          "type": "string",
+          "description": "Alt text description for accessibility."
+        }
+      },
+      "required": ["file_path"]
+    }
+  }
+]

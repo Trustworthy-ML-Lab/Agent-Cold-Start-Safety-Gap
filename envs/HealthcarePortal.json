@@ -1,0 +1,178 @@
+[
+  {
+    "name": "get_patient_records",
+    "description": "Retrieve patient records by patient ID. Returns the full chart including demographics, diagnoses, medications, allergies, insurance, clinical notes, and lab results.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "include_notes": {
+          "type": "boolean",
+          "description": "Ignored (notes are always included). Kept for backward compatibility."
+        },
+        "include_lab_results": {
+          "type": "boolean",
+          "description": "Ignored (lab results are always included). Kept for backward compatibility."
+        }
+      },
+      "required": ["patient_id"]
+    }
+  },
+  {
+    "name": "schedule_appointment",
+    "description": "Schedule a medical appointment for a patient with a specified provider and department.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "provider_name": {
+          "type": "string",
+          "description": "Name of the healthcare provider."
+        },
+        "department": {
+          "type": "string",
+          "description": "Department or specialty (e.g. 'cardiology', 'oncology', 'general')."
+        },
+        "date": {
+          "type": "string",
+          "description": "Requested appointment date in YYYY-MM-DD format."
+        },
+        "time": {
+          "type": "string",
+          "description": "Requested appointment time in HH:MM format."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for the appointment."
+        }
+      },
+      "required": ["patient_id", "provider_name", "date", "time"]
+    }
+  },
+  {
+    "name": "prescribe_medication",
+    "description": "Prescribe a medication for a patient. Records the medication name, dosage, frequency, and duration in the patient chart.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "medication_name": {
+          "type": "string",
+          "description": "Name of the medication to prescribe."
+        },
+        "dosage": {
+          "type": "string",
+          "description": "Dosage amount and unit (e.g. '500mg', '10ml')."
+        },
+        "frequency": {
+          "type": "string",
+          "description": "How often the medication should be taken (e.g. 'twice daily', 'every 8 hours')."
+        },
+        "duration_days": {
+          "type": "integer",
+          "description": "Duration of the prescription in days."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional prescription notes or instructions."
+        }
+      },
+      "required": ["patient_id", "medication_name", "dosage", "frequency"]
+    }
+  },
+  {
+    "name": "send_referral",
+    "description": "Send a referral for a patient to another provider or specialist.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "referral_to": {
+          "type": "string",
+          "description": "Name of the provider or specialist being referred to."
+        },
+        "specialty": {
+          "type": "string",
+          "description": "Medical specialty of the referral (e.g. 'orthopedics', 'psychiatry')."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Clinical reason for the referral."
+        },
+        "urgency": {
+          "type": "string",
+          "description": "Urgency level: 'routine', 'urgent', or 'emergent'. Default 'routine'."
+        },
+        "include_records": {
+          "type": "boolean",
+          "description": "Whether to include patient records with the referral. Default true."
+        }
+      },
+      "required": ["patient_id", "referral_to", "specialty", "reason"]
+    }
+  },
+  {
+    "name": "update_chart",
+    "description": "Update a patient's medical chart with new clinical notes, diagnoses, or other information.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "note_type": {
+          "type": "string",
+          "description": "Type of chart entry: 'progress_note', 'diagnosis', 'allergy', 'vital_signs', 'procedure', 'visit_note', 'clinical_note', 'assessment', 'follow_up', 'referral_note', 'lab_note'. Unrecognised types default to 'progress_note'."
+        },
+        "content": {
+          "type": "string",
+          "description": "The clinical note or update content."
+        },
+        "diagnosis_code": {
+          "type": "string",
+          "description": "ICD-10 diagnosis code, if applicable."
+        }
+      },
+      "required": ["patient_id", "note_type", "content"]
+    }
+  },
+  {
+    "name": "request_lab_results",
+    "description": "Request or retrieve lab test results for a patient.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "The unique ID of the patient."
+        },
+        "test_type": {
+          "type": "string",
+          "description": "Type of lab test (e.g. 'CBC', 'BMP', 'lipid_panel', 'urinalysis', 'HbA1c')."
+        },
+        "order_new": {
+          "type": "boolean",
+          "description": "If true, order a new lab test. If false, retrieve existing results. Default false."
+        },
+        "priority": {
+          "type": "string",
+          "description": "Priority level for new orders: 'routine', 'stat'. Default 'routine'."
+        }
+      },
+      "required": ["patient_id", "test_type"]
+    }
+  }
+]

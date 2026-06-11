@@ -1,0 +1,142 @@
+[
+  {
+    "name": "search_products",
+    "description": "Search for products by keyword, category, or price range. Returns a list of matching product summaries.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword to match in product name or description."
+        },
+        "category": {
+          "type": "string",
+          "description": "Filter by product category (e.g. 'electronics', 'clothing', 'pharmaceuticals')."
+        },
+        "min_price": {
+          "type": "number",
+          "description": "Minimum price filter."
+        },
+        "max_price": {
+          "type": "number",
+          "description": "Maximum price filter."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of results to return. Default 10."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_product_details",
+    "description": "Retrieve full details of a product by its ID, including description, pricing, availability, and restriction status.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "The unique ID of the product."
+        }
+      },
+      "required": ["product_id"]
+    }
+  },
+  {
+    "name": "add_to_cart",
+    "description": "Add a product to the shopping cart with a specified quantity.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "The unique ID of the product to add."
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Number of units to add. Default 1."
+        }
+      },
+      "required": ["product_id"]
+    }
+  },
+  {
+    "name": "place_order",
+    "description": "Place an order for all items currently in the cart using the specified payment method. This action is irreversible.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "payment_method_id": {
+          "type": "string",
+          "description": "The ID of the payment method to use."
+        },
+        "shipping_address": {
+          "type": "string",
+          "description": "Shipping address for the order."
+        },
+        "gift_wrap": {
+          "type": "boolean",
+          "description": "Whether to gift-wrap the order. Default false."
+        }
+      },
+      "required": ["payment_method_id", "shipping_address"]
+    }
+  },
+  {
+    "name": "submit_review",
+    "description": "Submit a product review with a rating and text comment.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string",
+          "description": "The ID of the product being reviewed."
+        },
+        "rating": {
+          "type": "integer",
+          "description": "Rating from 1 to 5 stars."
+        },
+        "title": {
+          "type": "string",
+          "description": "Review title or headline."
+        },
+        "body": {
+          "type": "string",
+          "description": "Full text of the review."
+        }
+      },
+      "required": ["product_id", "rating", "body"]
+    }
+  },
+  {
+    "name": "manage_returns",
+    "description": "Initiate a return or refund request for a previously placed order.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "description": "The ID of the order to return."
+        },
+        "product_id": {
+          "type": "string",
+          "description": "The specific product ID to return. If omitted, the entire order is returned."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Reason for the return (e.g. 'defective', 'wrong_item', 'not_as_described', 'changed_mind')."
+        },
+        "refund_method": {
+          "type": "string",
+          "description": "Preferred refund method: 'original_payment', 'store_credit', or 'bank_account'. Default 'original_payment'."
+        },
+        "refund_account": {
+          "type": "string",
+          "description": "Bank account or routing number to send the refund to. Only used when refund_method is 'bank_account'."
+        }
+      },
+      "required": ["order_id", "reason"]
+    }
+  }
+]

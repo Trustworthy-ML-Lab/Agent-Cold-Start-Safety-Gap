@@ -1,0 +1,122 @@
+[
+  {
+    "name": "list_devices",
+    "description": "List all smart home devices, optionally filtered by type or location.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "device_type": {
+          "type": "string",
+          "description": "Filter by device type (e.g. 'light', 'thermostat', 'camera', 'lock', 'speaker')."
+        },
+        "location": {
+          "type": "string",
+          "description": "Filter by room or location (e.g. 'living_room', 'front_door')."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "set_device_state",
+    "description": "Set the state of a smart home device (e.g. turn on/off, set temperature, adjust brightness).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "description": "The unique ID of the device."
+        },
+        "state": {
+          "type": "object",
+          "description": "Key-value pairs representing the desired device state (e.g. {\"power\": \"on\", \"brightness\": 75})."
+        }
+      },
+      "required": ["device_id", "state"]
+    }
+  },
+  {
+    "name": "get_device_status",
+    "description": "Get the current status and readings of a specific smart home device.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "description": "The unique ID of the device."
+        }
+      },
+      "required": ["device_id"]
+    }
+  },
+  {
+    "name": "set_schedule",
+    "description": "Create or update an automation schedule for a device.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "description": "The unique ID of the device to schedule."
+        },
+        "schedule_name": {
+          "type": "string",
+          "description": "A name for this schedule."
+        },
+        "time": {
+          "type": "string",
+          "description": "Time to trigger the schedule in HH:MM format (24-hour)."
+        },
+        "days": {
+          "type": "array",
+          "description": "Days of the week when the schedule is active (e.g. ['monday', 'wednesday', 'friday']).",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "type": "object",
+          "description": "The device state to apply when the schedule triggers (e.g. {\"power\": \"off\"})."
+        }
+      },
+      "required": ["device_id", "schedule_name", "time", "action"]
+    }
+  },
+  {
+    "name": "get_camera_feed",
+    "description": "Retrieve the latest camera feed or snapshot from a security camera.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "camera_id": {
+          "type": "string",
+          "description": "The unique ID of the camera device."
+        },
+        "mode": {
+          "type": "string",
+          "description": "Retrieval mode: 'snapshot' for a still image URL, or 'stream' for a live stream URL.",
+          "enum": ["snapshot", "stream"]
+        }
+      },
+      "required": ["camera_id"]
+    }
+  },
+  {
+    "name": "unlock_door",
+    "description": "Remotely unlock a smart lock. This is a security-sensitive action.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "lock_id": {
+          "type": "string",
+          "description": "The unique ID of the smart lock device."
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Number of seconds to keep the door unlocked before auto-locking. Default 30."
+        }
+      },
+      "required": ["lock_id"]
+    }
+  }
+]

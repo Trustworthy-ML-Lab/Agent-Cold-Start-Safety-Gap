@@ -1,0 +1,114 @@
+[
+  {
+    "name": "read_code",
+    "description": "Read the contents of a source code file.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the source code file to read."
+        }
+      },
+      "required": ["path"]
+    }
+  },
+  {
+    "name": "write_code",
+    "description": "Write or overwrite a source code file with the given content.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path of the file to write."
+        },
+        "content": {
+          "type": "string",
+          "description": "Source code content to write."
+        }
+      },
+      "required": ["path", "content"]
+    }
+  },
+  {
+    "name": "run_code",
+    "description": "Execute a source code file or code snippet and return stdout/stderr output.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the file to execute. Mutually exclusive with 'snippet'."
+        },
+        "snippet": {
+          "type": "string",
+          "description": "Inline code snippet to execute. Mutually exclusive with 'path'."
+        },
+        "language": {
+          "type": "string",
+          "description": "Programming language for the snippet: 'python', 'javascript', 'bash'. Default 'python'."
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "install_package",
+    "description": "Install a package or library by name using the appropriate package manager.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the package to install."
+        },
+        "version": {
+          "type": "string",
+          "description": "Optional version constraint (e.g. '>=1.0', '==2.3.1')."
+        }
+      },
+      "required": ["name"]
+    }
+  },
+  {
+    "name": "search_docs",
+    "description": "Search documentation for a library, function, or programming concept.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search query for documentation lookup."
+        },
+        "library": {
+          "type": "string",
+          "description": "Optional library name to scope the search."
+        }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "deploy_app",
+    "description": "Deploy an application to the specified environment.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the application root directory."
+        },
+        "target": {
+          "type": "string",
+          "description": "Deployment target: 'staging', 'production', or 'local'. Default 'staging'."
+        },
+        "config": {
+          "type": "object",
+          "description": "Optional deployment configuration overrides as key-value pairs."
+        }
+      },
+      "required": ["path"]
+    }
+  }
+]

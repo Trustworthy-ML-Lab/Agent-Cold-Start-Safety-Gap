@@ -1,0 +1,1340 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "AddAgenda",
+      "description": "The API for adding a agenda item includes content, time and location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the agenda."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for agenda. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the agenda."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time",
+          "location"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "AddAlarm",
+      "description": "The API for setting an alarm includes a parameter for the alarm time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "description": "The time for alarm. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "AddMeeting",
+      "description": "This API allows users to make a reservation for a meeting and store the meeting information (e.g., topic, time, location, attendees) in the database.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "meeting_topic": {
+            "type": "string",
+            "description": "The title of the meeting, no more than 50 characters."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location where the meeting to be held, no more than 100 characters."
+          },
+          "attendees": {
+            "type": "string",
+            "description": "The attendees of the meeting, including names, positions and other information."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "meeting_topic",
+          "start_time",
+          "end_time",
+          "location",
+          "attendees"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "AddReminder",
+      "description": "The API for adding a reminder item includes content and time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the conference."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for conference. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "AddScene",
+      "description": "This API adds a scene of smart home system, given the scene name and a list of smart devices",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the scene."
+          },
+          "devices": {
+            "type": "array",
+            "description": "The list of smart devices, containing the name and description. Format be like [{\"name\": \"light\", \"description\": \"Smart light in the kitchen\"}, {\"name\": \"oven\", \"description\": \"Smart oven in the kitchen\"}, {\"name\": \"range hood\", \"description\": \"Smart range hood in the kitchen\"}]"
+          }
+        },
+        "required": [
+          "name",
+          "devices"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "AppointmentRegistration",
+      "description": "This API registers an appointment of hospital.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "patient_name": {
+            "type": "string",
+            "description": "The name of patient."
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of appointment. Format be like %Y-%m-%d"
+          },
+          "doctor_name": {
+            "type": "string",
+            "description": "The name of appointed doctor."
+          }
+        },
+        "required": [
+          "patient_name",
+          "date",
+          "doctor_name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "BookHotel",
+      "description": "This API orders a hotel room. Two rooms are ordered if the number of adults is greater than 2. Only one order can be made at same time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "hotel_name": {
+            "type": "string",
+            "description": "The name of the hotel."
+          },
+          "check_in_time": {
+            "type": "string",
+            "description": "The time to check in. Format: %Y-%m-%d"
+          },
+          "check_out_time": {
+            "type": "string",
+            "description": "The time to check out. Format: %Y-%m-%d"
+          },
+          "room_count": {
+            "type": "integer",
+            "description": "The number of rooms to order."
+          },
+          "adult_count": {
+            "type": "integer",
+            "description": "The number of adults."
+          },
+          "child_count": {
+            "type": "integer",
+            "description": "The number of children."
+          }
+        },
+        "required": [
+          "hotel_name",
+          "check_in_time",
+          "check_out_time",
+          "room_count",
+          "adult_count",
+          "child_count"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "Calculator",
+      "description": "This API provides basic arithmetic operations: addition, subtraction, multiplication, and division.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "formula": {
+            "type": "string",
+            "description": "The formula that needs to be calculated. Only integers are supported. Valid operators are +, -, *, /, and (, ). For example, '(1 + 2) * 3'."
+          }
+        },
+        "required": [
+          "formula"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "CancelRegistration",
+      "description": "This API cancels the registration of a patient given appointment ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "appointment_id": {
+            "type": "string",
+            "description": "The ID of appointment."
+          }
+        },
+        "required": [
+          "appointment_id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "CancelTimedSwitch",
+      "description": "Cancels a timed switch for a smart device.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the smart device."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time to switch the device on or off. Format: %Y-%m-%d %H:%M:%S"
+          }
+        },
+        "required": [
+          "name",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteAccount",
+      "description": "Delete an account.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteAgenda",
+      "description": "The API for deleting a schedule item includes parameters for token, content, time, and location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the agenda."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for agenda. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the agenda."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time",
+          "location"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteAlarm",
+      "description": "The API for removing an alarm includes a parameter for the time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "description": "The time for alarm. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteMeeting",
+      "description": "This API allows users to delete a reservation for a meeting and remove the meeting information in the database.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "meeting_topic": {
+            "type": "string",
+            "description": "The title of the meeting, no more than 50 characters."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location where the meeting to be held, no more than 100 characters."
+          },
+          "attendees": {
+            "type": "string",
+            "description": "The attendees of the meeting, including names, positions and other information."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "meeting_topic",
+          "start_time",
+          "end_time",
+          "location",
+          "attendees"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteReminder",
+      "description": "The API for deleting a reminder item includes content and time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the conference."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for conference. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DeleteScene",
+      "description": "This API deletes a scene by its name.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the scene."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "Dictionary",
+      "description": "This API searches the dictionary for a given keyword.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "The keyword to search."
+          }
+        },
+        "required": [
+          "keyword"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "DocumentQA",
+      "description": "This API answers the question from a given document url.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The url to download the document. It should end with .txt."
+          },
+          "question": {
+            "type": "string",
+            "description": "The question to be answered."
+          }
+        },
+        "required": [
+          "url",
+          "question"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "EmergencyKnowledge",
+      "description": "This API searches for a given symptom for emergency knowledge.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "symptom": {
+            "type": "string",
+            "description": "The symptom to search."
+          }
+        },
+        "required": [
+          "symptom"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ForgotPassword",
+      "description": "Sends an email to the user with a link to reset the password. Need call twice, first with 'Forgot Password' status to get the verification code, then call again with 'Verification Code' status to change the password. Must pass the name of the parameters when calling the API, like ForgotPassword(status='Forgot Password', username='username').",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "'Forgot Password' for first call, after get the verification code, call again with 'Verification Code' to change the password."
+          },
+          "username": {
+            "type": "string",
+            "description": "The username of the user. Only needed for the first call."
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user. Only needed for the first call."
+          },
+          "verification_code": {
+            "type": "integer",
+            "description": "The verification code sent to the user. Only needed for the second call."
+          },
+          "new_password": {
+            "type": "string",
+            "description": "The new password of the user. Only needed for the second call."
+          }
+        },
+        "required": [
+          "status",
+          "username",
+          "email",
+          "verification_code",
+          "new_password"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "GetToday",
+      "description": "This API gets the current date.",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ImageCaption",
+      "description": "This API generates a caption for a given image.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The url to download the image. It should end with .jpg, .jpeg or .png."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyAgenda",
+      "description": "The API for modifying a schedule item includes parameters for content, time, and location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the agenda."
+          },
+          "time": {
+            "type": "string",
+            "description": "The new time for agenda. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The new location of the agenda."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time",
+          "location"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyAlarm",
+      "description": "The API for modifying an alarm includes a parameter for the from_time to to_time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "from_time": {
+            "type": "string",
+            "description": "The time for alarm which changed from. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "to_time": {
+            "type": "string",
+            "description": "The time for alarm which changed to. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "from_time",
+          "to_time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyMeeting",
+      "description": "This API allows users to modify a reservation for a meeting",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "meeting_topic": {
+            "type": "string",
+            "description": "The title of the meeting, no more than 50 characters."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location where the meeting to be held, no more than 100 characters."
+          },
+          "attendees": {
+            "type": "string",
+            "description": "The attendees of the meeting, including names, positions and other information."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "meeting_topic",
+          "start_time",
+          "end_time",
+          "location",
+          "attendees"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyPassword",
+      "description": "The API for modifying the password of the account.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "old_password": {
+            "type": "string",
+            "description": "The old password of the user."
+          },
+          "new_password": {
+            "type": "string",
+            "description": "The new password of the user."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "old_password",
+          "new_password"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyRegistration",
+      "description": "This API modifies the registration of a patient given appointment ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "appointment_id": {
+            "type": "string",
+            "description": "The ID of appointment."
+          },
+          "new_appointment_date": {
+            "type": "string",
+            "description": "The new appointment date. Format: %Y-%m-%d."
+          },
+          "new_appointment_doctor": {
+            "type": "string",
+            "description": "The new appointment doctor."
+          }
+        },
+        "required": [
+          "appointment_id",
+          "new_appointment_date",
+          "new_appointment_doctor"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyReminder",
+      "description": "The API for deleting a reminder item includes content and time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the conference."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for conference. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "ModifyScene",
+      "description": "This API modifies a scene of smart home system, given the scene name and a list of smart devices",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the scene."
+          },
+          "devices": {
+            "type": "array",
+            "description": "The list of smart devices, containing the name and description."
+          }
+        },
+        "required": [
+          "name",
+          "devices"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "OpenBankAccount",
+      "description": "This is an API for opening a bank account for a user, given the account, password and name.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "The account for the user."
+          },
+          "password": {
+            "type": "string",
+            "description": "The password."
+          },
+          "name": {
+            "type": "string",
+            "description": "account holder name."
+          }
+        },
+        "required": [
+          "account",
+          "password",
+          "name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "PlayMusic",
+      "description": "This API triggers a music player to play music.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "music_name": {
+            "type": "string",
+            "description": "The name of the music to play."
+          }
+        },
+        "required": [
+          "music_name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryAgenda",
+      "description": "The API for getting a schedule item includes parameters for token, content, time, and location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the agenda."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for agenda. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location of the agenda."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time",
+          "location"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryAlarm",
+      "description": "The API for querying alarm clock, help user to check the alarm clock they have set.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "description": "The time for alarm. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryBalance",
+      "description": "This API queries the balance of a given user.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryHealthData",
+      "description": "This API queries the recorded health data in database of a given user and time span.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The user id of the given user. Cases are ignored."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The start time of the time span. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The end time of the time span. Format: %Y-%m-%d %H:%M:%S"
+          }
+        },
+        "required": [
+          "user_id",
+          "start_time",
+          "end_time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryHistoryToday",
+      "description": "This API queries the history of the given date.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date of the history. Format: %m-%d"
+          }
+        },
+        "required": [
+          "date"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryMeeting",
+      "description": "This API allows users to query the information of a meeting.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "meeting_topic": {
+            "type": "string",
+            "description": "The title of the meeting, no more than 50 characters."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The start time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The end time of the meeting, in the pattern of %Y-%m-%d %H:%M:%S"
+          },
+          "location": {
+            "type": "string",
+            "description": "The location where the meeting to be held, no more than 100 characters."
+          },
+          "attendees": {
+            "type": "string",
+            "description": "The attendees of the meeting, including names, positions and other information."
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "meeting_topic",
+          "start_time",
+          "end_time",
+          "location",
+          "attendees"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryRegistration",
+      "description": "This API queries the registration of a patient, given patient ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "patient_name": {
+            "type": "string",
+            "description": "The name of patient."
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of appointment. Format be like %Y-%m-%d"
+          }
+        },
+        "required": [
+          "patient_name",
+          "date"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryReminder",
+      "description": "The API for querying a reminder item includes content and time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "The content of the reminder."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time for the reminder. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token for authentication."
+          }
+        },
+        "required": [
+          "token",
+          "content",
+          "time"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryScene",
+      "description": "This API queries a scene of smart home system, given the scene name",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the scene."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "QueryStock",
+      "description": "This API queries the stock price of a given stock code and date.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "stock_code": {
+            "type": "string",
+            "description": "The stock code of the given stock."
+          },
+          "date": {
+            "type": "string",
+            "description": "The date of the stock price. Format: %Y-%m-%d"
+          }
+        },
+        "required": [
+          "stock_code",
+          "date"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "RecordHealthData",
+      "description": "This API records the health data of a user.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of user."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time of health data. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "health_data": {
+            "type": "array",
+            "description": "The health data, with the format like [{'name': 'blood_pressure', 'value': '120/80'}, {'name': 'heart_rate', 'value': '80'}]"
+          }
+        },
+        "required": [
+          "user_id",
+          "time",
+          "health_data"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "RegisterUser",
+      "description": "The API for registering a account, given the username, password and email.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "The username of the user."
+          },
+          "password": {
+            "type": "string",
+            "description": "The password of the user."
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the user."
+          }
+        },
+        "required": [
+          "username",
+          "password",
+          "email"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "SendEmail",
+      "description": "This API for sending email, given the receiver, subject and content.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "receiver": {
+            "type": "string",
+            "description": "The receiver address of the email."
+          },
+          "subject": {
+            "type": "string",
+            "description": "The subject address of the email."
+          },
+          "content": {
+            "type": "string",
+            "description": "The content of the email."
+          }
+        },
+        "required": [
+          "receiver",
+          "subject",
+          "content"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "SpeechRecognition",
+      "description": "This API recognizes the speech from a given audio url.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The url to download the audio. It should end with .wav."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "SymptomSearch",
+      "description": "This API searches for a given symptom.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "symptom": {
+            "type": "string",
+            "description": "The symptom to search."
+          }
+        },
+        "required": [
+          "symptom"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "TimedSwitch",
+      "description": "This API for setting a timed switch for a smart device.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the smart device."
+          },
+          "time": {
+            "type": "string",
+            "description": "The time to switch the device on or off. Format: %Y-%m-%d %H:%M:%S"
+          },
+          "on": {
+            "type": "boolean",
+            "description": "Whether to switch the device on or off."
+          }
+        },
+        "required": [
+          "name",
+          "time",
+          "on"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "Wiki",
+      "description": "This API for searching a keyword in Wikipedia.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "The keyword to search."
+          }
+        },
+        "required": [
+          "keyword"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "GetUserToken",
+      "description": "Get the user token by username and password.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "The username of the user."
+          },
+          "password": {
+            "type": "string",
+            "description": "The password of the user."
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "CheckToken",
+      "description": "Check if the token is valid.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The token to check."
+          }
+        },
+        "required": [
+          "token"
+        ]
+      }
+    }
+  }
+]

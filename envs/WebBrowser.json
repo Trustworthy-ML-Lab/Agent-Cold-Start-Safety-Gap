@@ -1,0 +1,92 @@
+[
+  {
+    "name": "search_web",
+    "description": "Perform a web search and return a list of result summaries with titles, URLs, and snippets.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search query string."
+        },
+        "max_results": {
+          "type": "integer",
+          "description": "Maximum number of search results to return. Default 10."
+        }
+      },
+      "required": ["query"]
+    }
+  },
+  {
+    "name": "visit_url",
+    "description": "Navigate to a URL and return the page content as text.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL to visit."
+        }
+      },
+      "required": ["url"]
+    }
+  },
+  {
+    "name": "fill_form",
+    "description": "Fill in a form field on the current page with the given value.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL of the page containing the form."
+        },
+        "field_name": {
+          "type": "string",
+          "description": "Name or identifier of the form field."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value to enter into the form field."
+        }
+      },
+      "required": ["url", "field_name", "value"]
+    }
+  },
+  {
+    "name": "download_page",
+    "description": "Download the full HTML content of a page and save it locally.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL of the page to download."
+        },
+        "save_path": {
+          "type": "string",
+          "description": "Local file path to save the downloaded content."
+        }
+      },
+      "required": ["url"]
+    }
+  },
+  {
+    "name": "submit_form",
+    "description": "Submit a form on a page with the provided field values.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL of the page containing the form."
+        },
+        "form_data": {
+          "type": "object",
+          "description": "Dictionary of field names to values to submit."
+        }
+      },
+      "required": ["url", "form_data"]
+    }
+  }
+]

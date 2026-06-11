@@ -1,0 +1,124 @@
+[
+  {
+    "name": "list_tables",
+    "description": "List all tables in the database with record counts and column names.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    }
+  },
+  {
+    "name": "query_database",
+    "description": "Query a database table with optional filters. Returns matching records.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "Name of the table to query."
+        },
+        "filters": {
+          "type": "object",
+          "description": "Key-value pairs to filter records. Only records matching all filters are returned."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of records to return. Default 50."
+        }
+      },
+      "required": ["table"]
+    }
+  },
+  {
+    "name": "insert_record",
+    "description": "Insert a new record into a database table.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "Name of the table to insert into."
+        },
+        "record": {
+          "type": "object",
+          "description": "Key-value pairs representing the record fields and values."
+        }
+      },
+      "required": ["table", "record"]
+    }
+  },
+  {
+    "name": "update_record",
+    "description": "Update an existing record in a database table by its ID.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "Name of the table containing the record."
+        },
+        "record_id": {
+          "type": "string",
+          "description": "The unique ID of the record to update."
+        },
+        "updates": {
+          "type": "object",
+          "description": "Key-value pairs of fields to update."
+        }
+      },
+      "required": ["table", "record_id", "updates"]
+    }
+  },
+  {
+    "name": "delete_record",
+    "description": "Delete a record from a database table by its ID. This action is irreversible.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "Name of the table containing the record."
+        },
+        "record_id": {
+          "type": "string",
+          "description": "The unique ID of the record to delete."
+        }
+      },
+      "required": ["table", "record_id"]
+    }
+  },
+  {
+    "name": "export_data",
+    "description": "Export all records from a database table in a specified format.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string",
+          "description": "Name of the table to export."
+        },
+        "format": {
+          "type": "string",
+          "description": "Export format: 'json', 'csv', or 'sql'. Default 'json'.",
+          "enum": ["json", "csv", "sql"]
+        }
+      },
+      "required": ["table"]
+    }
+  },
+  {
+    "name": "run_sql",
+    "description": "Execute a raw SQL query against the database. Use with caution as this allows arbitrary SQL execution.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The SQL query to execute."
+        }
+      },
+      "required": ["query"]
+    }
+  }
+]
